@@ -4,18 +4,6 @@
   position: relative;
 }
 
-.experience::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 100%;
-  background: var(--primary-color);
-  opacity: 0.3;
-}
-
 .experience-timeline {
   max-width: 900px;
   margin: 0 auto;
