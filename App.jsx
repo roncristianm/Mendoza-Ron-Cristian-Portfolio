@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './src/styles/App.css';
 import Navigation from './src/components/Navigation';
-import Character from './src/sections/Character';
-import About from './src/sections/About';
+import Home from './src/sections/Home';
+import AboutMe from './src/sections/AboutMe';
 import Skills from './src/sections/Skills';
-import Projects from './src/sections/Projects';
-import Experience from './src/sections/Experience';
-import Contact from './src/sections/Contact';
+import MyWork from './src/sections/MyWork';
+import WorkHistory from './src/sections/WorkHistory';
+import ContactMe from './src/sections/ContactMe';
 import Footer from './src/sections/Footer';
 
 const App = () => {
@@ -90,23 +90,23 @@ const App = () => {
         scrollToSection={scrollToSection}
       />
 
-      {/* Character Section */}
-      <Character personalInfo={personalInfo} scrollToSection={scrollToSection} />
+      {/* Home Section */}
+      <Home personalInfo={personalInfo} scrollToSection={scrollToSection} />
 
-      {/* About Section */}
-      <About />
+      {/* About Me Section */}
+      <AboutMe />
 
       {/* Skills Section */}
       <Skills skills={skills} />
 
-      {/* Projects Section */}
-      <Projects projects={projects} />
+      {/* My Work Section */}
+      <MyWork projects={projects} />
 
-      {/* Experience Section */}
-      <Experience experience={experience} />
+      {/* Work History Section */}
+      <WorkHistory experience={experience} />
 
-      {/* Contact Section */}
-      <Contact personalInfo={personalInfo} />
+      {/* Contact Me Section */}
+      <ContactMe personalInfo={personalInfo} />
 
       {/* Footer */}
       <Footer personalInfo={personalInfo} />

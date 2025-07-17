@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Experience = ({ experience }) => {
+const WorkHistory = ({ experience }) => {
   return (
     <section id="experience" className="experience">
       <div className="container">
@@ -22,4 +22,4 @@ const Experience = ({ experience }) => {
   );
 };
 
-export default Experience;
+export default WorkHistory;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Github } from 'lucide-react';
 
-const Projects = ({ projects }) => {
+const MyWork = ({ projects }) => {
   return (
     <section id="projects" className="projects">
       <div className="container">
@@ -33,4 +33,4 @@ const Projects = ({ projects }) => {
   );
 };
 
-export default Projects;
+export default MyWork;

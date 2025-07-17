@@ -1,10 +1,10 @@
 /* Import all section styles */
 @import './base.css';
-@import './navigation.css';
-@import './character.css';
-@import './about.css';
-@import './skills.css';
-@import './projects.css';
-@import './experience.css';
-@import './contact.css';
-@import './footer.css';
+@import './Navigation.css';
+@import './Home.css';
+@import './AboutMe.css';
+@import './Skills.css';
+@import './MyWork.css';
+@import './WorkHistory.css';
+@import './ContactMe.css';
+@import './Footer.css';

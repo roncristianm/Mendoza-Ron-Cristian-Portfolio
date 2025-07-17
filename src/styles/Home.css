@@ -1,5 +1,5 @@
-/* Character Section Styles */
-.character {
+/* Home Section Styles */
+.home {
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -11,7 +11,7 @@
   overflow: hidden;
 }
 
-.character-content {
+.home-content {
   position: relative;
   z-index: 2;
   max-width: 800px;
@@ -19,7 +19,7 @@
   padding: 0 20px;
 }
 
-.character-content h1 {
+.home-content h1 {
   font-size: 4rem;
   margin-bottom: 1rem;
   font-weight: 800;
@@ -27,14 +27,14 @@
   line-height: 1.1;
 }
 
-.character-content h2 {
+.home-content h2 {
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
   font-weight: 400;
   opacity: 0.9;
 }
 
-.character-content p {
+.home-content p {
   font-size: 1.25rem;
   margin-bottom: 2.5rem;
   opacity: 0.8;
@@ -50,47 +50,47 @@
   background-clip: text;
 }
 
-.character-buttons {
+.home-buttons {
   display: flex;
   gap: 1.5rem;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-/* Mobile Character Styles */
+/* Mobile Home Styles */
 @media (max-width: 768px) {
-  .character-content h1 {
+  .home-content h1 {
     font-size: 2.5rem;
   }
 
-  .character-content h2 {
+  .home-content h2 {
     font-size: 1.25rem;
   }
 
-  .character-content p {
+  .home-content p {
     font-size: 1rem;
   }
 
-  .character-buttons {
+  .home-buttons {
     flex-direction: column;
     align-items: center;
   }
 }
 
 @media (max-width: 480px) {
-  .character-content h1 {
+  .home-content h1 {
     font-size: 2rem;
   }
 
-  .character-content h2 {
+  .home-content h2 {
     font-size: 1.1rem;
   }
 
-  .character-content p {
+  .home-content p {
     font-size: 0.9rem;
   }
 
-  .character {
+  .home {
     min-height: 90vh;
   }
 }

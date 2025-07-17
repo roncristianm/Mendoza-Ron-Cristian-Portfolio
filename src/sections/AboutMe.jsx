@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfilePic from '../images/ProfilePic.jpg';
 
-const About = () => {
+const AboutMe = () => {
   return (
     <section id="about" className="about">
       <div className="container">
@@ -22,4 +22,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutMe;

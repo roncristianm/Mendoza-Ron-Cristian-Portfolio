@@ -1,7 +1,7 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin } from 'lucide-react';
 
-const Contact = ({ personalInfo }) => {
+const ContactMe = ({ personalInfo }) => {
   return (
     <section id="contact" className="contact">
       <div className="container">
@@ -34,4 +34,4 @@ const Contact = ({ personalInfo }) => {
   );
 };
 
-export default Contact;
+export default ContactMe;
