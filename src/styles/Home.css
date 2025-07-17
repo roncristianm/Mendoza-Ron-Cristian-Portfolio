@@ -20,23 +20,23 @@
 }
 
 .home-content h1 {
-  font-size: 4rem;
-  margin-bottom: 1rem;
+  font-size: 4.5rem;
+  margin-bottom: 1.2rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.1;
 }
 
 .home-content h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.7rem;
+  margin-bottom: 1.8rem;
   font-weight: 400;
   opacity: 0.9;
 }
 
 .home-content p {
-  font-size: 1.25rem;
-  margin-bottom: 2.5rem;
+  font-size: 1.4rem;
+  margin-bottom: 2.8rem;
   opacity: 0.8;
   max-width: 600px;
   margin-left: auto;
@@ -52,7 +52,7 @@
 
 .home-buttons {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.8rem;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -60,15 +60,15 @@
 /* Mobile Home Styles */
 @media (max-width: 768px) {
   .home-content h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
 
   .home-content h2 {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
   }
 
   .home-content p {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   .home-buttons {

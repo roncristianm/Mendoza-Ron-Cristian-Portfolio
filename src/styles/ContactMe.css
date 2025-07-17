@@ -24,7 +24,7 @@
 
 .contact h2 {
   color: white;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .contact h2::after {
@@ -32,8 +32,8 @@
 }
 
 .contact p {
-  font-size: 1.25rem;
-  margin-bottom: 3rem;
+  font-size: 1.4rem;
+  margin-bottom: 3.5rem;
   opacity: 0.9;
   max-width: 600px;
   margin-left: auto;
@@ -43,18 +43,18 @@
 .contact-info {
   display: flex;
   justify-content: center;
-  gap: 3rem;
-  margin-bottom: 3rem;
+  gap: 3.5rem;
+  margin-bottom: 3.5rem;
   flex-wrap: wrap;
 }
 
 .contact-item {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 1rem;
   color: #e2e8f0;
-  font-size: 1.1rem;
-  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  padding: 1.2rem 1.8rem;
   background: rgba(30, 41, 59, 0.6);
   border-radius: 12px;
   backdrop-filter: blur(10px);
@@ -70,13 +70,13 @@
 .social-links {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1.8rem;
 }
 
 .social-links a {
   color: #e2e8f0;
   transition: all 0.3s ease;
-  padding: 1rem;
+  padding: 1.2rem;
   background: rgba(30, 41, 59, 0.6);
   border-radius: 12px;
   backdrop-filter: blur(10px);

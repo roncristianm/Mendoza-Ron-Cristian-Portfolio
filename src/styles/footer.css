@@ -3,12 +3,12 @@
   background: #020617;
   color: var(--text-light);
   text-align: center;
-  padding: 2rem 0;
+  padding: 2.5rem 0;
   border-top: 1px solid rgba(51, 65, 85, 0.3);
 }
 
 .footer p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   opacity: 0.8;
 }
 
