@@ -226,7 +226,7 @@ const App = () => {
       {/* Footer */}
       <footer className="footer">
         <div className="container">
-          <p>&copy; 2024 {personalInfo.name}. All rights reserved.</p>
+          <p>&copy; 2025 {personalInfo.name}. All rights reserved.</p>
         </div>
       </footer>
     </div>
