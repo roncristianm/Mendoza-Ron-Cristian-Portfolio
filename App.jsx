@@ -46,7 +46,7 @@ const App = () => {
     {
       title: "Student - Web Developer",
       company: "Planning and Development Office, BSU",
-      period: "2025",
+      period: "2025 - Present",
       description: "Learning to build and update websites using React and Node.js while working with experienced developers and teams to create useful software."
     },
   ];
