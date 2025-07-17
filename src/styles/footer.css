@@ -1,0 +1,24 @@
+/* Footer Styles */
+.footer {
+  background: #020617;
+  color: var(--text-light);
+  text-align: center;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(51, 65, 85, 0.3);
+}
+
+.footer p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Mobile Footer Styles */
+@media (max-width: 480px) {
+  .footer {
+    padding: 1.5rem 0;
+  }
+  
+  .footer p {
+    font-size: 0.8rem;
+  }
+}
