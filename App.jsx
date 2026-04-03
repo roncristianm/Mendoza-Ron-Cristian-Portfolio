@@ -52,8 +52,9 @@ const App = () => {
   const skills = [
     { category: "Web Design", items: ["React", "JavaScript", "HTML5", "CSS3"] },
     { category: "Server Side", items: ["Node.js", "Python", "Express.js"] },
-    { category: "Database", items: ["MongoDB", "MySQL"] },
-    { category: "Tools", items: ["Git", "Vite", "Postman"] }
+    { category: "Database", items: ["MongoDB", "MySQL", "Firebase"] },
+    { category: "AI / ML", items: ["OpenCV", "PyTorch", "YOLOv8", "ONNX", "Pygame"] },
+    { category: "Tools", items: ["Git", "Vite", "Postman", "Google Sheets API"] }
   ];
 
   const experience = [
