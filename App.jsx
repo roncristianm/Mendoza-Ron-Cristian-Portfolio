@@ -41,7 +41,7 @@ const App = () => {
     {
       id: 3,
       title: "My Portfolio Website",
-      description: "A clean, easy-to-use website built with React and Vite",
+      description: "My portfolio website built with React and Vite",
       technologies: ["React", "JavaScript", "CSS3", "Vite"],
       githubUrl: "https://github.com/roncristianm/Mendoza-Ron-Cristian-Portfolio",
     }
