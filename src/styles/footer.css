@@ -1,24 +1,11 @@
-/* Footer Styles */
 .footer {
-  background: #020617;
-  color: var(--text-light);
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 0;
   text-align: center;
-  padding: 2.5rem 0;
-  border-top: 1px solid rgba(51, 65, 85, 0.3);
 }
 
 .footer p {
-  font-size: 1rem;
-  opacity: 0.8;
-}
-
-/* Mobile Footer Styles */
-@media (max-width: 480px) {
-  .footer {
-    padding: 1.5rem 0;
-  }
-  
-  .footer p {
-    font-size: 0.8rem;
-  }
+  font-size: 0.825rem;
+  color: var(--text-muted);
 }

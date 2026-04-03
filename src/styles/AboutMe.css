@@ -1,89 +1,37 @@
-/* About Section Styles */
 .about {
-  background: var(--bg-secondary);
-  position: relative;
-}
-
-.about::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(67, 56, 202, 0.05);
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .about-content {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 4.5rem;
+  grid-template-columns: 1fr 220px;
+  gap: 3.5rem;
   align-items: center;
-  position: relative;
-  z-index: 2;
 }
 
 .about-text p {
-  font-size: 1.2rem;
-  margin-bottom: 1.8rem;
+  font-size: 0.975rem;
   color: var(--text-secondary);
   line-height: 1.8;
 }
 
-.about-text p:first-child {
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.about-image {
-  position: relative;
-}
-
-.about-image::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: -20px;
-  right: 20px;
-  bottom: 20px;
-  background: var(--primary-color);
-  border-radius: 20px;
-  z-index: -1;
-  opacity: 0.1;
-}
-
 .about-image img {
   width: 100%;
-  max-width: 350px;
-  border-radius: 20px;
-  box-shadow: var(--shadow-xl);
-  transition: transform 0.3s ease;
+  border-radius: 10px;
+  display: block;
+  box-shadow: var(--shadow-md);
 }
 
-.about-image:hover img {
-  transform: scale(1.05);
-}
-
-/* Mobile About Styles */
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .about-content {
     grid-template-columns: 1fr;
-    gap: 3rem;
-    text-align: center;
-  }
-
-  .about-content {
-    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
   .about-image {
     order: -1;
-  }
-}
-
-@media (max-width: 480px) {
-  .about-text p {
-    font-size: 1rem;
+    max-width: 160px;
   }
 }
