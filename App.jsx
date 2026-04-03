@@ -57,10 +57,10 @@ const App = () => {
 
   const experience = [
     {
-      title: "Student - Web Developer",
+      title: "Student Intern - Computer Engineer",
       company: "Planning and Development Office, BSU",
-      period: "2025 - 2025",
-      description: "Learning to build and update websites using React and Node.js while working with experienced developers and teams to create useful software."
+      period: "2025",
+      description: "Developed and maintained web systems using React and Node.js as part of the university's planning and development team. Applied computer engineering principles to build practical software solutions used by the institution."
     },
   ];
 

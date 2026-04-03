@@ -7,7 +7,7 @@ const Home = ({ personalInfo, setCurrentPage }) => {
         <p className="home-tag">Portfolio_v1.0</p>
         <h1>Hi, I'm<br /><span className="highlight">{personalInfo.name}</span></h1>
         <h2>{personalInfo.title}</h2>
-        <p>I love creating new things and building great websites that people enjoy using.</p>
+        <p>A Computer Engineering student who builds software across the stack — from web applications and backend systems to AI-powered embedded projects.</p>
         <div className="home-buttons">
           <button className="btn primary" onClick={() => setCurrentPage('projects')}>
             See My Work
