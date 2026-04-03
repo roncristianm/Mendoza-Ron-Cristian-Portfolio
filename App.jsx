@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './src/styles/App.css';
 import Navigation from './src/components/Navigation';
 import Home from './src/sections/Home';
@@ -9,7 +9,7 @@ import WorkHistory from './src/sections/WorkHistory';
 import ContactMe from './src/sections/ContactMe';
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [activeSection, setActiveSection] = useState('home');
 
   const personalInfo = {
     name: "Ron Cristian Mendoza",
@@ -44,7 +44,8 @@ const App = () => {
     { category: "Web Design", items: ["React", "JavaScript", "HTML5", "CSS3"] },
     { category: "Server Side", items: ["Node.js", "Python", "Express.js"] },
     { category: "Database", items: ["MongoDB", "MySQL", "Firebase"] },
-    { category: "Tools", items: ["Git", "Vite"] }
+    { category: "AI / ML", items: ["OpenCV", "PyTorch", "YOLOv8", "ONNX", "Pygame"] },
+    { category: "Tools", items: ["Git", "Vite", "Postman", "Google Sheets API"] }
   ];
 
   const experience = [
@@ -56,23 +57,48 @@ const App = () => {
     },
   ];
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'home':       return <Home personalInfo={personalInfo} setCurrentPage={setCurrentPage} />;
-      case 'about':      return <AboutMe />;
-      case 'skills':     return <Skills skills={skills} />;
-      case 'projects':   return <MyWork projects={projects} />;
-      case 'experience': return <WorkHistory experience={experience} />;
-      case 'contact':    return <ContactMe personalInfo={personalInfo} />;
-      default:           return <Home personalInfo={personalInfo} setCurrentPage={setCurrentPage} />;
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
+  useEffect(() => {
+    const sections = ['home', 'about', 'skills', 'projects', 'experience', 'contact'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="App">
-      <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} personalInfo={personalInfo} />
+      <Navigation
+        activeSection={activeSection}
+        scrollToSection={scrollToSection}
+        personalInfo={personalInfo}
+      />
       <main className="main-content">
-        {renderPage()}
+        <Home personalInfo={personalInfo} scrollToSection={scrollToSection} />
+        <AboutMe />
+        <Skills skills={skills} />
+        <MyWork projects={projects} />
+        <WorkHistory experience={experience} />
+        <ContactMe personalInfo={personalInfo} />
       </main>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Home = ({ personalInfo, setCurrentPage }) => {
+const Home = ({ personalInfo, scrollToSection }) => {
   return (
     <section id="home" className="home">
       <div className="home-content">
@@ -9,10 +9,10 @@ const Home = ({ personalInfo, setCurrentPage }) => {
         <h2>{personalInfo.title}</h2>
         <p>A Computer Engineering student who builds software across the stack — from web applications and backend systems to AI-powered embedded projects.</p>
         <div className="home-buttons">
-          <button className="btn primary" onClick={() => setCurrentPage('projects')}>
+          <button className="btn primary" onClick={() => scrollToSection('projects')}>
             See My Work
           </button>
-          <button className="btn secondary" onClick={() => setCurrentPage('contact')}>
+          <button className="btn secondary" onClick={() => scrollToSection('contact')}>
             Contact Me
           </button>
         </div>

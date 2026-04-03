@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const navItems = [
@@ -10,11 +10,11 @@ const navItems = [
   { id: 'contact',    label: 'Contact' },
 ];
 
-const Navigation = ({ currentPage, setCurrentPage, personalInfo }) => {
+const Navigation = ({ activeSection, scrollToSection, personalInfo }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleNav = (id) => {
-    setCurrentPage(id);
+    scrollToSection(id);
     setMobileOpen(false);
   };
 
@@ -37,7 +37,7 @@ const Navigation = ({ currentPage, setCurrentPage, personalInfo }) => {
           {navItems.map((item, i) => (
             <li key={item.id}>
               <button
-                className={`sidebar-link ${currentPage === item.id ? 'active' : ''}`}
+                className={`sidebar-link ${activeSection === item.id ? 'active' : ''}`}
                 onClick={() => handleNav(item.id)}
               >
                 <span className="sidebar-index">0{i + 1}</span>
@@ -68,7 +68,7 @@ const Navigation = ({ currentPage, setCurrentPage, personalInfo }) => {
           {navItems.map((item, i) => (
             <button
               key={item.id}
-              className={`mobile-link ${currentPage === item.id ? 'active' : ''}`}
+              className={`mobile-link ${activeSection === item.id ? 'active' : ''}`}
               onClick={() => handleNav(item.id)}
             >
               <span className="sidebar-index">0{i + 1}</span>
