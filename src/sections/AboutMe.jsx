@@ -10,7 +10,7 @@ const AboutMe = () => {
             <span className="section-label">About Me</span>
             <h2>Building things<br />for the web.</h2>
             <p>
-              I'm a web developer who loves building websites and learning new things.
+              I'm a Computer Engineer who loves building websites and learning new things.
               I enjoy making websites that work well and look good — from frontend interfaces
               to backend systems, I like understanding how all the pieces fit together.
             </p>
