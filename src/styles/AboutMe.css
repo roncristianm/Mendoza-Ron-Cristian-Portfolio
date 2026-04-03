@@ -6,8 +6,8 @@
 
 .about-content {
   display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 6rem;
+  grid-template-columns: 1fr 280px;
+  gap: 4rem;
   align-items: center;
 }
 

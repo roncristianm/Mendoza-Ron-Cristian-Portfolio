@@ -9,7 +9,7 @@
   border-right: 1px solid var(--border-mid);
   display: flex;
   flex-direction: column;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem 1.25rem;
   z-index: 100;
 }
 

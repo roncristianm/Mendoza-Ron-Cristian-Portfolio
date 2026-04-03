@@ -5,6 +5,7 @@
   background: var(--bg);
   position: relative;
   overflow: hidden;
+  padding: 0;
 }
 
 /* Corner decoration */
@@ -21,7 +22,7 @@
 
 .home-content {
   width: 100%;
-  padding: 0 64px;
+  padding: 0 40px;
 }
 
 .home-tag {
@@ -90,8 +91,8 @@
 .home-stats {
   display: flex;
   gap: 3rem;
-  margin-top: 4rem;
-  padding-top: 2.5rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
   border-top: 1px solid var(--border);
 }
 

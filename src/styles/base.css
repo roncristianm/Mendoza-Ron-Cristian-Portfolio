@@ -22,7 +22,7 @@
   --border-mid:    rgba(0, 212, 255, 0.2);
 
   --radius:        4px;
-  --sidebar-w:     260px;
+  --sidebar-w:     200px;
 }
 
 html { scroll-behavior: smooth; }
@@ -41,15 +41,15 @@ body {
 
 .container {
   width: 100%;
-  padding: 0 64px;
+  padding: 0 40px;
 }
 
 section {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 80px 0;
+  justify-content: flex-start;
+  padding: 56px 0 48px;
 }
 
 .section-label {
