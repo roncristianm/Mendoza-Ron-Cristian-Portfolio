@@ -38,20 +38,13 @@ const App = () => {
       githubUrl: "https://github.com/roncristianm/WebEng-Final-Project",
       liveUrl: "https://bhsanexxus.vercel.app/",
     },
-    {
-      id: 3,
-      title: "My Portfolio Website",
-      description: "My portfolio website built with React and Vite",
-      technologies: ["React", "JavaScript", "CSS3", "Vite"],
-      githubUrl: "https://github.com/roncristianm/Mendoza-Ron-Cristian-Portfolio",
-    }
   ];
 
   const skills = [
     { category: "Web Design", items: ["React", "JavaScript", "HTML5", "CSS3"] },
     { category: "Server Side", items: ["Node.js", "Python", "Express.js"] },
     { category: "Database", items: ["MongoDB", "MySQL", "Firebase"] },
-    { category: "Tools", items: ["Git", "Vite", "Postman"] }
+    { category: "Tools", items: ["Git", "Vite"] }
   ];
 
   const experience = [
