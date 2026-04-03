@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './src/styles/App.css';
 import Navigation from './src/components/Navigation';
 import Home from './src/sections/Home';
@@ -7,13 +7,10 @@ import Skills from './src/sections/Skills';
 import MyWork from './src/sections/MyWork';
 import WorkHistory from './src/sections/WorkHistory';
 import ContactMe from './src/sections/ContactMe';
-import Footer from './src/sections/Footer';
 
 const App = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [currentPage, setCurrentPage] = useState('home');
 
-  // Sample data - you can customize this with your actual information
   const personalInfo = {
     name: "Ron Cristian Mendoza",
     title: "Web Developer",
@@ -61,70 +58,29 @@ const App = () => {
     {
       title: "Student - Web Developer",
       company: "Planning and Development Office, BSU",
-      period: "2025 - Present",
+      period: "2025 - 2025",
       description: "Learning to build and update websites using React and Node.js while working with experienced developers and teams to create useful software."
     },
   ];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'projects', 'experience', 'contact'];
-      const scrollPosition = window.scrollY + 100;
-
-      sections.forEach(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-          }
-        }
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'home':       return <Home personalInfo={personalInfo} setCurrentPage={setCurrentPage} />;
+      case 'about':      return <AboutMe />;
+      case 'skills':     return <Skills skills={skills} />;
+      case 'projects':   return <MyWork projects={projects} />;
+      case 'experience': return <WorkHistory experience={experience} />;
+      case 'contact':    return <ContactMe personalInfo={personalInfo} />;
+      default:           return <Home personalInfo={personalInfo} setCurrentPage={setCurrentPage} />;
     }
-    setIsMenuOpen(false);
   };
 
   return (
     <div className="App">
-      {/* Navigation */}
-      <Navigation 
-        personalInfo={personalInfo}
-        isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
-        activeSection={activeSection}
-        scrollToSection={scrollToSection}
-      />
-
-      {/* Home Section */}
-      <Home personalInfo={personalInfo} scrollToSection={scrollToSection} />
-
-      {/* About Me Section */}
-      <AboutMe />
-
-      {/* Skills Section */}
-      <Skills skills={skills} />
-
-      {/* My Work Section */}
-      <MyWork projects={projects} />
-
-      {/* Work History Section */}
-      <WorkHistory experience={experience} />
-
-      {/* Contact Me Section */}
-      <ContactMe personalInfo={personalInfo} />
-
-      {/* Footer */}
-      <Footer personalInfo={personalInfo} />
+      <main className="main-content">
+        {renderPage()}
+      </main>
+      <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} personalInfo={personalInfo} />
     </div>
   );
 };

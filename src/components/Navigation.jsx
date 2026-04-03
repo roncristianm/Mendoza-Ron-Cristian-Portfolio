@@ -1,38 +1,33 @@
 import React from 'react';
-import { Menu, X } from 'lucide-react';
 
-const Navigation = ({ 
-  personalInfo, 
-  isMenuOpen, 
-  setIsMenuOpen, 
-  activeSection, 
-  scrollToSection 
-}) => {
+const navItems = [
+  { id: 'home',       label: 'Home' },
+  { id: 'about',      label: 'About' },
+  { id: 'skills',     label: 'Skills' },
+  { id: 'projects',   label: 'My Work' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'contact',    label: 'Contact' },
+];
+
+const Navigation = ({ currentPage, setCurrentPage, personalInfo }) => {
   return (
-    <nav className="navbar">
-      <div className="nav-container">
-        <div className="nav-logo">
-          <h2>{personalInfo.name}</h2>
-        </div>
-        <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-          {['home', 'about', 'skills', 'projects', 'experience', 'contact'].map(section => (
-            <a
-              key={section}
-              href={`#${section}`}
-              className={`nav-link ${activeSection === section ? 'active' : ''}`}
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection(section);
-              }}
-            >
-              {section.charAt(0).toUpperCase() + section.slice(1)}
-            </a>
-          ))}
-        </div>
-        <div className="nav-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </div>
+    <nav className="sidebar">
+      <div className="sidebar-name">
+        <span>{personalInfo.name}</span>
+        <p>{personalInfo.title}</p>
       </div>
+      <ul className="sidebar-nav">
+        {navItems.map(item => (
+          <li key={item.id}>
+            <button
+              className={`sidebar-link ${currentPage === item.id ? 'active' : ''}`}
+              onClick={() => setCurrentPage(item.id)}
+            >
+              {item.label}
+            </button>
+          </li>
+        ))}
+      </ul>
     </nav>
   );
 };

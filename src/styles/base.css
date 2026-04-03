@@ -31,13 +31,16 @@ body {
 }
 
 .container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 24px;
+  max-width: 700px;
+  padding: 0 48px;
 }
 
 section {
-  padding: 80px 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px 0;
 }
 
 section h2 {
@@ -81,4 +84,15 @@ section h2 {
 .btn.secondary:hover {
   background: var(--bg-alt);
   color: var(--text);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+
+  section {
+    min-height: auto;
+    padding: 48px 0;
+  }
 }

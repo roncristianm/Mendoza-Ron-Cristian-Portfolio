@@ -1,15 +1,18 @@
 import React from 'react';
 
-const Home = ({ personalInfo, scrollToSection }) => {
+const Home = ({ personalInfo, setCurrentPage }) => {
   return (
     <section id="home" className="home">
       <div className="home-content">
-        <h1>Hi, I'm <br/><span className="highlight">{personalInfo.name}</span></h1>
+        <h1>Hi, I'm <br /><span className="highlight">{personalInfo.name}</span></h1>
         <h2>{personalInfo.title}</h2>
         <p>I love creating new things and building great websites that people enjoy using.</p>
         <div className="home-buttons">
-          <button className="btn primary" onClick={() => scrollToSection('projects')}>
+          <button className="btn primary" onClick={() => setCurrentPage('projects')}>
             See My Work
+          </button>
+          <button className="btn secondary" onClick={() => setCurrentPage('contact')}>
+            Contact Me
           </button>
         </div>
       </div>
