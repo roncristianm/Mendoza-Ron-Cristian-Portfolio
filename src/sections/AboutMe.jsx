@@ -11,9 +11,8 @@ const AboutMe = () => {
             <h2>Engineering solutions,<br />one line at a time.</h2>
             <p>
               I'm a Computer Engineering student with a passion for building software that solves real problems.
-              My work spans web development, backend systems, and AI-powered applications — including
-              a real-time pattern recognition system built for Raspberry Pi and a full-stack learning
-              platform used by a school. I enjoy understanding how hardware and software work together,
+              My work spans web development, backend systems, and AI-powered applications.
+              I enjoy understanding how hardware and software work together,
               and I'm always looking for projects where I can apply that across the full stack.
             </p>
           </div>
