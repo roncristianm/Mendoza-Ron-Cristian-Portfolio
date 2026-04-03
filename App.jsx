@@ -28,13 +28,20 @@ const App = () => {
   const projects = [
     {
       id: 1,
+      title: "SewBot - Pattern Recognition System",
+      description: "A futuristic sewing guide app with real-time camera overlay and AI-powered stitch line detection using YOLOv8-nano segmentation. Built for Raspberry Pi with a sci-fi themed UI, 5 pattern levels, and adjustable confidence threshold.",
+      technologies: ["Python", "OpenCV", "PyTorch", "YOLOv8", "Pygame", "ONNX"],
+      githubUrl: "https://github.com/Jimsj029/SewBot-Rpi",
+    },
+    {
+      id: 2,
       title: "Nexxus · BHSA",
       description: "A role-based learning platform for Bataan High School for the Arts. Features auth with email verification, class/assignment management, Google Sheets grade sync, announcements, a calendar view, and automated email notifications via Firebase Cloud Functions.",
       technologies: ["React", "Vite", "Firebase", "Express.js", "Google Sheets API", "Brevo"],
       githubUrl: "https://github.com/roncristianm/WebEng-Final-Project",
     },
     {
-      id: 2,
+      id: 3,
       title: "My Website",
       description: "A clean, easy-to-use website built with React and Vite",
       technologies: ["React", "JavaScript", "CSS3", "Vite"],
