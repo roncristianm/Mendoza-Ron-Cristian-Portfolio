@@ -36,6 +36,7 @@ const App = () => {
       description: "A role-based learning platform for Bataan High School for the Arts. Features auth with email verification, class/assignment management, Google Sheets grade sync, announcements, a calendar view, and automated email notifications via Firebase Cloud Functions.",
       technologies: ["React", "Vite", "Firebase", "Express.js", "Google Sheets API", "Brevo"],
       githubUrl: "https://github.com/roncristianm/WebEng-Final-Project",
+      liveUrl: "https://bhsanexxus.vercel.app/",
     },
     {
       id: 3,
