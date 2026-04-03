@@ -5,11 +5,12 @@ const MyWork = ({ projects }) => {
   return (
     <section id="projects" className="projects">
       <div className="container">
-        <h2>My Work</h2>
+        <span className="section-label">My Work</span>
+        <h2>Projects I've built.</h2>
         <div className="projects-grid">
           {projects.map(project => (
             <div key={project.id} className="project-card">
-            
+              <p className="project-number">PROJECT_{String(project.id).padStart(2, '0')}</p>
               <div className="project-content">
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
@@ -20,8 +21,8 @@ const MyWork = ({ projects }) => {
                 </div>
                 <div className="project-links">
                   <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                    <Github size={20} />
-                    Code
+                    <Github size={16} />
+                    View Code
                   </a>
                 </div>
               </div>

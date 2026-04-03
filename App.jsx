@@ -13,7 +13,7 @@ const App = () => {
 
   const personalInfo = {
     name: "Ron Cristian Mendoza",
-    title: "Web Developer",
+    title: "Computer Engineer",
     email: "roncristianm@gmail.com",
     phone: "+63 950 355 1152",
     location: "Pulilan, Bulacan, Philippines",
@@ -77,10 +77,10 @@ const App = () => {
 
   return (
     <div className="App">
+      <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} personalInfo={personalInfo} />
       <main className="main-content">
         {renderPage()}
       </main>
-      <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} personalInfo={personalInfo} />
     </div>
   );
 };

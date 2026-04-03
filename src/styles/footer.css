@@ -6,6 +6,8 @@
 }
 
 .footer p {
-  font-size: 0.825rem;
+  font-size: 0.775rem;
   color: var(--text-muted);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.05em;
 }

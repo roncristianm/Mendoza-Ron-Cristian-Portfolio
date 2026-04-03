@@ -4,7 +4,8 @@ const Skills = ({ skills }) => {
   return (
     <section id="skills" className="skills">
       <div className="container">
-        <h2>Skills</h2>
+        <span className="section-label">Skills</span>
+        <h2>What I work with.</h2>
         <div className="skills-grid">
           {skills.map((skillCategory, index) => (
             <div key={index} className="skill-category">
