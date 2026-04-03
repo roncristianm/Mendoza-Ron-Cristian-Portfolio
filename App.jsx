@@ -26,8 +26,15 @@ const App = () => {
   };
 
   const projects = [
-     {
+    {
       id: 1,
+      title: "Nexxus · BHSA",
+      description: "A role-based learning platform for Bataan High School for the Arts. Features auth with email verification, class/assignment management, Google Sheets grade sync, announcements, a calendar view, and automated email notifications via Firebase Cloud Functions.",
+      technologies: ["React", "Vite", "Firebase", "Express.js", "Google Sheets API", "Brevo"],
+      githubUrl: "https://github.com/roncristianm",
+    },
+    {
+      id: 2,
       title: "My Website",
       description: "A clean, easy-to-use website built with React and Vite",
       technologies: ["React", "JavaScript", "CSS3", "Vite"],
