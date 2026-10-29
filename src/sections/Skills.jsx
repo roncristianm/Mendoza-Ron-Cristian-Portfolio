@@ -4,7 +4,10 @@ const Skills = ({ skills, isEditing, onSkillsChange }) => {
   const updateCategory = (index, key, value) => onSkillsChange(skills.map((item, i) => i === index ? { ...item, [key]: value } : item));
   const updateItems = (index, value) => updateCategory(index, 'items', value.split(',').map((item) => item.trim()).filter(Boolean));
   const addCategory = () => onSkillsChange([...skills, { category: 'New Category', items: [] }]);
-  const removeCategory = (index) => onSkillsChange(skills.filter((_, i) => i !== index));
+  const removeCategory = (index) => {
+    if (!window.confirm(`Remove the "${skills[index].category}" skill category?`)) return;
+    onSkillsChange(skills.filter((_, i) => i !== index));
+  };
   return (
     <section id="skills" className="skills">
       <div className="container">

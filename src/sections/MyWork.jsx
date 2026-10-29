@@ -7,7 +7,10 @@ const MyWork = ({ projects, isEditing, onProjectsChange }) => {
   const getProjectImages = (project) => project.images || (project.image ? [project.image] : []);
   const updateProject = (index, key, value) => onProjectsChange(projects.map((project, i) => i === index ? { ...project, [key]: value } : project));
   const addProject = () => onProjectsChange([...projects, { id: Date.now(), title: 'New project', description: 'Describe your project here.', technologies: [], githubUrl: '', liveUrl: '', images: [] }]);
-  const removeProject = (index) => onProjectsChange(projects.filter((_, i) => i !== index));
+  const removeProject = (index) => {
+    if (!window.confirm(`Remove "${projects[index].title}" from your projects?`)) return;
+    onProjectsChange(projects.filter((_, i) => i !== index));
+  };
   const uploadImages = (index, files) => {
     Array.from(files).forEach((file) => {
       const reader = new FileReader();
@@ -52,7 +55,7 @@ const MyWork = ({ projects, isEditing, onProjectsChange }) => {
         <h2>Projects I've built.</h2>
         <div className="projects-grid">
           {projects.map((project, index) => (
-            <div key={project.id} className="project-card" role="button" tabIndex="0" onClick={() => setSelectedProjectIndex(index)} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') setSelectedProjectIndex(index); }}>
+            <div key={project.id} className="project-card">
               <p className="project-number">PROJECT_{String(project.id).padStart(2, '0')}</p>
               {isEditing && <button className="project-delete" aria-label="Remove project" onClick={(event) => { event.stopPropagation(); removeProject(index); }}><Trash2 size={15} /></button>}
               <div className="project-content">
@@ -117,6 +120,7 @@ const MyWork = ({ projects, isEditing, onProjectsChange }) => {
                   <img src={image} alt={`${selectedProject.title} preview ${imageIndex + 1}`} />
                   </button>
                   {isEditing && <button className="details-image-remove" onClick={() => {
+                    if (!window.confirm('Remove this project picture?')) return;
                     const images = getProjectImages(selectedProject).filter((_, currentIndex) => currentIndex !== imageIndex);
                     updateProject(selectedProjectIndex, 'images', images);
                     if (lightbox?.projectIndex === selectedProjectIndex && lightbox.imageIndex === imageIndex) closeLightbox();

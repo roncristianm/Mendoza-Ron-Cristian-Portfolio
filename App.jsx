@@ -65,6 +65,7 @@ const App = () => {
 
   const saveContent = () => {
     if (!supabase || !session) return;
+    if (!window.confirm('Save these portfolio changes to the shared portfolio?')) return;
     supabase.from('portfolio_content').upsert({ id: 1, content }).then(({ error }) => {
       if (error) {
         setAuthError(error.message);

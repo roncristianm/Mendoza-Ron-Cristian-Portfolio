@@ -18,6 +18,7 @@ const WorkHistory = ({ experience, isEditing, onExperienceChange }) => {
   };
 
   const removeExperience = (index) => {
+    if (!window.confirm(`Remove the "${experience[index].title}" experience entry?`)) return;
     onExperienceChange(experience.filter((_, i) => i !== index));
   };
 
