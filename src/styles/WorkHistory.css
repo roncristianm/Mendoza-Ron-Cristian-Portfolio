@@ -3,15 +3,18 @@
 }
 
 .experience-timeline {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
+  align-items: stretch;
 }
 
 .experience-item {
   border-left: 1px solid var(--accent-border);
   padding-left: 2rem;
   position: relative;
+  min-width: 0;
+  height: 100%;
 }
 
 .experience-item::before {
@@ -56,4 +59,14 @@
   color: var(--text-secondary);
   line-height: 1.75;
   max-width: 680px;
+}
+
+.experience-remove {
+  display: block;
+}
+
+@media (max-width: 850px) {
+  .experience-timeline {
+    grid-template-columns: 1fr;
+  }
 }

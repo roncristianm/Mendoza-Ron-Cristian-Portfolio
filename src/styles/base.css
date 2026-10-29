@@ -5,21 +5,21 @@
 }
 
 :root {
-  --accent:        #00d4ff;
-  --accent-dim:    rgba(0, 212, 255, 0.08);
-  --accent-border: rgba(0, 212, 255, 0.2);
-  --accent-glow:   0 0 24px rgba(0, 212, 255, 0.25);
+  --accent:        #b9e8ff;
+  --accent-dim:    rgba(185, 232, 255, 0.09);
+  --accent-border: rgba(185, 232, 255, 0.24);
+  --accent-glow:   0 0 24px rgba(185, 232, 255, 0.2);
 
-  --text:          #ddeeff;
-  --text-secondary:#6b8fa8;
-  --text-muted:    #2d4a60;
+  --text:          #f8fbff;
+  --text-secondary:#aebdca;
+  --text-muted:    #687888;
 
-  --bg:            #040d16;
-  --bg-alt:        #071220;
-  --bg-card:       #081828;
+  --bg:            #111820;
+  --bg-alt:        #0b1b2e;
+  --bg-card:       #1b2733;
 
-  --border:        rgba(0, 212, 255, 0.1);
-  --border-mid:    rgba(0, 212, 255, 0.2);
+  --border:        rgba(185, 232, 255, 0.12);
+  --border-mid:    rgba(185, 232, 255, 0.22);
 
   --radius:        4px;
   --sidebar-w:     200px;
@@ -33,8 +33,8 @@ body {
   color: var(--text);
   background-color: var(--bg);
   background-image:
-    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(185, 232, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(185, 232, 255, 0.025) 1px, transparent 1px);
   background-size: 64px 64px;
   line-height: 1.6;
 }
@@ -70,7 +70,7 @@ section {
 
 section h2 {
   font-size: 2.8rem;
-  font-weight: 700;
+  font-weight: 650;
   letter-spacing: -0.03em;
   color: var(--text);
   margin-bottom: 3rem;

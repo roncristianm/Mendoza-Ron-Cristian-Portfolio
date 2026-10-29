@@ -10,7 +10,7 @@ const navItems = [
   { id: 'contact',    label: 'Contact' },
 ];
 
-const Navigation = ({ activeSection, scrollToSection, personalInfo }) => {
+const Navigation = ({ activeSection, scrollToSection, personalInfo, isEditing, onPersonalInfoChange }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleNav = (id) => {
@@ -26,8 +26,17 @@ const Navigation = ({ activeSection, scrollToSection, personalInfo }) => {
             {personalInfo.name.split(' ').map(n => n[0]).join('')}
           </span>
           <div className="sidebar-info">
-            <p className="sidebar-name">{personalInfo.name}</p>
-            <p className="sidebar-title">{personalInfo.title}</p>
+            {isEditing ? (
+              <>
+                <input className="edit-input sidebar-edit" value={personalInfo.name} onChange={(e) => onPersonalInfoChange({ ...personalInfo, name: e.target.value })} />
+                <input className="edit-input sidebar-edit" value={personalInfo.title} onChange={(e) => onPersonalInfoChange({ ...personalInfo, title: e.target.value })} />
+              </>
+            ) : (
+              <>
+                <p className="sidebar-name">{personalInfo.name}</p>
+                <p className="sidebar-title">{personalInfo.title}</p>
+              </>
+            )}
           </div>
         </div>
 

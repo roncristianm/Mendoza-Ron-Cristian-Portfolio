@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Skills = ({ skills }) => {
+const Skills = ({ skills, isEditing, onSkillsChange }) => {
+  const updateCategory = (index, key, value) => onSkillsChange(skills.map((item, i) => i === index ? { ...item, [key]: value } : item));
+  const updateItems = (index, value) => updateCategory(index, 'items', value.split(',').map((item) => item.trim()).filter(Boolean));
+  const addCategory = () => onSkillsChange([...skills, { category: 'New Category', items: [] }]);
+  const removeCategory = (index) => onSkillsChange(skills.filter((_, i) => i !== index));
   return (
     <section id="skills" className="skills">
       <div className="container">
@@ -9,15 +13,17 @@ const Skills = ({ skills }) => {
         <div className="skills-grid">
           {skills.map((skillCategory, index) => (
             <div key={index} className="skill-category">
-              <h3>{skillCategory.category}</h3>
+              {isEditing ? <input className="edit-input skill-category-edit" value={skillCategory.category} onChange={(e) => updateCategory(index, 'category', e.target.value)} /> : <h3>{skillCategory.category}</h3>}
               <div className="skill-items">
-                {skillCategory.items.map((skill, skillIndex) => (
+                {isEditing ? <textarea className="edit-textarea skill-items-edit" value={skillCategory.items.join(', ')} onChange={(e) => updateItems(index, e.target.value)} placeholder="React, JavaScript, CSS" /> : skillCategory.items.map((skill, skillIndex) => (
                   <span key={skillIndex} className="skill-item">{skill}</span>
                 ))}
               </div>
+              {isEditing && <button className="inline-remove" onClick={() => removeCategory(index)}>Remove category</button>}
             </div>
           ))}
         </div>
+        {isEditing && <button className="editor-add" onClick={addCategory}>+ Add skill category</button>}
       </div>
     </section>
   );

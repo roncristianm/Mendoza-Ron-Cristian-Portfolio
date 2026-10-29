@@ -1,7 +1,7 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin } from 'lucide-react';
 
-const ContactMe = ({ personalInfo }) => {
+const ContactMe = ({ personalInfo, contact, isEditing, onContactChange, onPersonalInfoChange }) => {
   return (
     <section id="contact" className="contact">
       <div className="container">
@@ -9,22 +9,19 @@ const ContactMe = ({ personalInfo }) => {
         <h2>Let's work together.</h2>
         <div className="contact-grid">
           <div className="contact-left">
-            <p>
-              I'm always open to new opportunities, collaborations, or just a good conversation about tech.
-              Feel free to reach out through any of the channels below.
-            </p>
+            {isEditing ? <textarea className="edit-textarea" value={contact.description} onChange={(e) => onContactChange({ ...contact, description: e.target.value })} /> : <p>{contact.description}</p>}
             <div className="contact-info">
               <div className="contact-item">
                 <Mail size={16} />
-                <span>{personalInfo.email}</span>
+                {isEditing ? <input className="edit-input" value={personalInfo.email} onChange={(e) => onPersonalInfoChange({ ...personalInfo, email: e.target.value })} /> : <span>{personalInfo.email}</span>}
               </div>
               <div className="contact-item">
                 <Phone size={16} />
-                <span>{personalInfo.phone}</span>
+                {isEditing ? <input className="edit-input" value={personalInfo.phone} onChange={(e) => onPersonalInfoChange({ ...personalInfo, phone: e.target.value })} /> : <span>{personalInfo.phone}</span>}
               </div>
               <div className="contact-item">
                 <MapPin size={16} />
-                <span>{personalInfo.location}</span>
+                {isEditing ? <input className="edit-input" value={personalInfo.location} onChange={(e) => onPersonalInfoChange({ ...personalInfo, location: e.target.value })} /> : <span>{personalInfo.location}</span>}
               </div>
             </div>
           </div>

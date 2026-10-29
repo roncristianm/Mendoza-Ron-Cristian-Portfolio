@@ -44,6 +44,12 @@ npm run dev
 npm run build
 ```
 
+## Shared editing with Supabase
+
+The deployed portfolio uses Supabase for shared content and admin authentication. Copy `.env.example` to `.env.local` and add your Supabase URL and publishable anon key. Never add a `service_role` key to the frontend or commit environment files.
+
+Run [`supabase/schema.sql`](./supabase/schema.sql) in the Supabase SQL Editor to create the table and Row Level Security policies. Create your admin user under Supabase **Authentication → Users**, then use **Admin login** on the deployed site. The first successful save creates the shared content row.
+
 ## Customization
 
 ### Personal Information
