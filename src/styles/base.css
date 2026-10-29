@@ -55,6 +55,7 @@ section {
   justify-content: flex-start;
   padding: 112px 0 72px;
   overflow: hidden;
+  border-bottom: 1px solid var(--border);
 }
 
 .section-label {

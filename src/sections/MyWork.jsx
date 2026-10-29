@@ -56,7 +56,7 @@ const MyWork = ({ projects, text, isEditing, onProjectsChange, onTextChange }) =
         <div className="projects-grid">
           {projects.map((project, index) => (
             <div key={project.id} className="project-card">
-              <p className="project-number">PROJECT_{String(project.id).padStart(2, '0')}</p>
+              <p className="project-number">PROJECT_{String(index + 1).padStart(2, '0')}</p>
               {isEditing && <button className="project-delete" aria-label="Remove project" onClick={(event) => { event.stopPropagation(); removeProject(index); }}><Trash2 size={15} /></button>}
               <div className="project-content">
                 {isEditing ? <input className="edit-input project-title-edit" value={project.title} onChange={(e) => updateProject(index, 'title', e.target.value)} /> : <h3>{project.title}</h3>}
@@ -111,7 +111,7 @@ const MyWork = ({ projects, text, isEditing, onProjectsChange, onTextChange }) =
         <div className="project-details-overlay" role="dialog" aria-modal="true" aria-label={`${selectedProject.title} project details`} onClick={() => setSelectedProjectIndex(null)}>
           <div className="project-details" onClick={(event) => event.stopPropagation()}>
             <button className="details-close" onClick={() => setSelectedProjectIndex(null)} aria-label="Close project details"><X size={20} /></button>
-            <p className="project-number">PROJECT_{String(selectedProject.id).padStart(2, '0')}</p>
+            <p className="project-number">PROJECT_{String(selectedProjectIndex + 1).padStart(2, '0')}</p>
             <h2>{selectedProject.title}</h2>
             <div className="details-gallery">
               {getProjectImages(selectedProject).length > 0 ? getProjectImages(selectedProject).map((image, imageIndex) => (
