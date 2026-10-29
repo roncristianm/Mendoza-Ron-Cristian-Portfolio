@@ -1,17 +1,16 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
-const navItems = [
-  { id: 'home',       label: 'Home' },
-  { id: 'about',      label: 'About' },
-  { id: 'skills',     label: 'Skills' },
-  { id: 'projects',   label: 'My Work' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'contact',    label: 'Contact' },
-];
-
-const Navigation = ({ activeSection, scrollToSection, personalInfo, isEditing, onPersonalInfoChange, adminControls }) => {
+const Navigation = ({ activeSection, scrollToSection, personalInfo, text, isEditing, onPersonalInfoChange, onTextChange, adminControls }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navItems = [
+    { id: 'home', label: text.homeNav },
+    { id: 'about', label: text.aboutNav },
+    { id: 'skills', label: text.skillsNav },
+    { id: 'projects', label: text.projectsNav },
+    { id: 'experience', label: text.experienceNav },
+    { id: 'contact', label: text.contactNav },
+  ];
 
   const handleNav = (id) => {
     scrollToSection(id);
@@ -30,12 +29,13 @@ const Navigation = ({ activeSection, scrollToSection, personalInfo, isEditing, o
         <ul className="sidebar-nav">
           {navItems.map((item) => (
             <li key={item.id}>
-              <button
-                className={`sidebar-link ${activeSection === item.id ? 'active' : ''}`}
-                onClick={() => handleNav(item.id)}
-              >
-                <span>{item.label}</span>
-              </button>
+              {isEditing ? (
+                <input className="edit-input nav-label-edit" value={item.label} onChange={(event) => onTextChange({ ...text, [`${item.id}Nav`]: event.target.value })} />
+              ) : (
+                <button className={`sidebar-link ${activeSection === item.id ? 'active' : ''}`} onClick={() => handleNav(item.id)}>
+                  <span>{item.label}</span>
+                </button>
+              )}
             </li>
           ))}
         </ul>

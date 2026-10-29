@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Skills = ({ skills, isEditing, onSkillsChange }) => {
+const Skills = ({ skills, text, isEditing, onSkillsChange, onTextChange }) => {
   const updateCategory = (index, key, value) => onSkillsChange(skills.map((item, i) => i === index ? { ...item, [key]: value } : item));
   const updateItems = (index, value) => updateCategory(index, 'items', value.split(',').map((item) => item.trim()).filter(Boolean));
   const addCategory = () => onSkillsChange([...skills, { category: 'New Category', items: [] }]);
@@ -11,8 +11,8 @@ const Skills = ({ skills, isEditing, onSkillsChange }) => {
   return (
     <section id="skills" className="skills">
       <div className="container">
-        <span className="section-label">Skills</span>
-        <h2>What I work with.</h2>
+        {isEditing ? <input className="edit-input section-label-edit" value={text.skillsLabel} onChange={(e) => onTextChange({ ...text, skillsLabel: e.target.value })} /> : <span className="section-label">{text.skillsLabel}</span>}
+        {isEditing ? <input className="edit-input edit-heading" value={text.skillsHeading} onChange={(e) => onTextChange({ ...text, skillsHeading: e.target.value })} /> : <h2>{text.skillsHeading}</h2>}
         <div className="skills-grid">
           {skills.map((skillCategory, index) => (
             <div key={index} className="skill-category">

@@ -1,12 +1,13 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin } from 'lucide-react';
+import ContactPortrait from '../images/ContactPortrait.jpg';
 
-const ContactMe = ({ personalInfo, contact, isEditing, onContactChange, onPersonalInfoChange }) => {
+const ContactMe = ({ personalInfo, contact, text, isEditing, onContactChange, onPersonalInfoChange, onTextChange }) => {
   return (
     <section id="contact" className="contact">
       <div className="container">
-        <span className="section-label">Contact</span>
-        <h2>Let's work together.</h2>
+        {isEditing ? <input className="edit-input section-label-edit" value={text.contactLabel} onChange={(e) => onTextChange({ ...text, contactLabel: e.target.value })} /> : <span className="section-label">{text.contactLabel}</span>}
+        {isEditing ? <input className="edit-input edit-heading" value={text.contactHeading} onChange={(e) => onTextChange({ ...text, contactHeading: e.target.value })} /> : <h2>{text.contactHeading}</h2>}
         <div className="contact-grid">
           <div className="contact-left">
             {isEditing ? <textarea className="edit-textarea" value={contact.description} onChange={(e) => onContactChange({ ...contact, description: e.target.value })} /> : <p>{contact.description}</p>}
@@ -24,18 +25,21 @@ const ContactMe = ({ personalInfo, contact, isEditing, onContactChange, onPerson
                 {isEditing ? <input className="edit-input" value={personalInfo.location} onChange={(e) => onPersonalInfoChange({ ...personalInfo, location: e.target.value })} /> : <span>{personalInfo.location}</span>}
               </div>
             </div>
+            {isEditing ? <input className="edit-input" value={text.findOnlineHeading} onChange={(e) => onTextChange({ ...text, findOnlineHeading: e.target.value })} /> : <h3>{text.findOnlineHeading}</h3>}
+            <div className="social-links">
+              {isEditing ? <input className="edit-input" value={personalInfo.github} onChange={(e) => onPersonalInfoChange({ ...personalInfo, github: e.target.value })} placeholder="GitHub URL" /> : <a href={personalInfo.github} target="_blank" rel="noopener noreferrer">
+                <Github size={16} />
+                {text.githubLabel}
+              </a>}
+              {isEditing ? <input className="edit-input" value={personalInfo.linkedin} onChange={(e) => onPersonalInfoChange({ ...personalInfo, linkedin: e.target.value })} placeholder="LinkedIn URL" /> : <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer">
+                <Linkedin size={16} />
+                {text.linkedinLabel}
+              </a>}
+            </div>
           </div>
           <div className="contact-right">
-            <h3>Find me online</h3>
-            <div className="social-links">
-              <a href={personalInfo.github} target="_blank" rel="noopener noreferrer">
-                <Github size={16} />
-                GitHub
-              </a>
-              <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer">
-                <Linkedin size={16} />
-                LinkedIn
-              </a>
+            <div className="contact-image">
+              <img src={ContactPortrait} alt="Ron Cristian Mendoza at graduation" />
             </div>
           </div>
         </div>

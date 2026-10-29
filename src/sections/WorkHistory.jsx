@@ -1,6 +1,6 @@
 import React from 'react';
 
-const WorkHistory = ({ experience, isEditing, onExperienceChange }) => {
+const WorkHistory = ({ experience, text, isEditing, onExperienceChange, onTextChange }) => {
   const updateExperience = (index, key, value) => {
     onExperienceChange(experience.map((item, i) => i === index ? { ...item, [key]: value } : item));
   };
@@ -25,8 +25,8 @@ const WorkHistory = ({ experience, isEditing, onExperienceChange }) => {
   return (
     <section id="experience" className="experience">
       <div className="container">
-        <span className="section-label">Experience</span>
-        <h2>Where I've worked.</h2>
+        {isEditing ? <input className="edit-input section-label-edit" value={text.experienceLabel} onChange={(e) => onTextChange({ ...text, experienceLabel: e.target.value })} /> : <span className="section-label">{text.experienceLabel}</span>}
+        {isEditing ? <input className="edit-input edit-heading" value={text.experienceHeading} onChange={(e) => onTextChange({ ...text, experienceHeading: e.target.value })} /> : <h2>{text.experienceHeading}</h2>}
         <div className="experience-timeline">
           {experience.map((exp, index) => (
             <div key={index} className="experience-item">

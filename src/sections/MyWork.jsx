@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Github, ExternalLink, Trash2, X } from 'lucide-react';
 
-const MyWork = ({ projects, isEditing, onProjectsChange }) => {
+const MyWork = ({ projects, text, isEditing, onProjectsChange, onTextChange }) => {
   const [lightbox, setLightbox] = useState(null);
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
   const getProjectImages = (project) => project.images || (project.image ? [project.image] : []);
@@ -51,8 +51,8 @@ const MyWork = ({ projects, isEditing, onProjectsChange }) => {
   return (
     <section id="projects" className="projects">
       <div className="container">
-        <span className="section-label">My Work</span>
-        <h2>Projects I've built.</h2>
+        {isEditing ? <input className="edit-input section-label-edit" value={text.projectsLabel} onChange={(e) => onTextChange({ ...text, projectsLabel: e.target.value })} /> : <span className="section-label">{text.projectsLabel}</span>}
+        {isEditing ? <input className="edit-input edit-heading" value={text.projectsHeading} onChange={(e) => onTextChange({ ...text, projectsHeading: e.target.value })} /> : <h2>{text.projectsHeading}</h2>}
         <div className="projects-grid">
           {projects.map((project, index) => (
             <div key={project.id} className="project-card">

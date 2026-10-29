@@ -28,10 +28,34 @@ const defaultContent = {
   },
   about: {
     heading: 'Engineering solutions, one line at a time.',
-    description: "I'm a Computer Engineering student with a passion for building software that solves real problems. My work spans web development, backend systems, and AI-powered applications. I enjoy understanding how hardware and software work together, and I'm always looking for projects where I can apply that across the full stack.",
+    description: "I'm a Computer Engineering graduate with a passion for building software that solves real problems. My work spans web development, backend systems, and AI-powered applications. I enjoy understanding how hardware and software work together, and I'm always looking for projects where I can apply that across the full stack.",
   },
   contact: {
     description: "I'm always open to new opportunities, collaborations, or just a good conversation about tech. Feel free to reach out through any of the channels below.",
+  },
+  text: {
+    homeNav: 'Home',
+    aboutNav: 'About',
+    skillsNav: 'Skills',
+    projectsNav: 'My Work',
+    experienceNav: 'Experience',
+    contactNav: 'Contact',
+    homeGreeting: "Hi, I'm",
+    homeTag: 'Portfolio / 2026',
+    homePrimaryButton: 'Explore my work',
+    homeSecondaryButton: "Let's connect",
+    aboutLabel: 'About Me',
+    skillsLabel: 'Skills',
+    skillsHeading: 'What I work with.',
+    projectsLabel: 'My Work',
+    projectsHeading: "Projects I've built.",
+    experienceLabel: 'Experience',
+    experienceHeading: "Where I've worked.",
+    contactLabel: 'Contact',
+    contactHeading: "Let's work together.",
+    findOnlineHeading: 'Find me online',
+    githubLabel: 'GitHub',
+    linkedinLabel: 'LinkedIn',
   },
   projects: [
     { id: 1, title: 'SewBot - Pattern Recognition System', description: 'A futuristic sewing guide app with real-time camera overlay and AI-powered stitch line detection using YOLOv8-nano segmentation. Built for Raspberry Pi with a sci-fi themed UI, 5 pattern levels, and adjustable confidence threshold.', technologies: ['Python', 'OpenCV', 'PyTorch', 'YOLOv8', 'Pygame', 'ONNX'], githubUrl: 'https://github.com/Jimsj029/SewBot-Rpi', image: '' },
@@ -90,7 +114,18 @@ const App = () => {
         supabase.auth.getSession(),
       ]);
       if (contentError) setAuthError(contentError.message);
-      if (active && contentRow?.content) setContent({ ...defaultContent, ...contentRow.content });
+      if (active && contentRow?.content) {
+        const sharedContent = contentRow.content;
+        setContent({
+          ...defaultContent,
+          ...sharedContent,
+          personalInfo: { ...defaultContent.personalInfo, ...sharedContent.personalInfo },
+          home: { ...defaultContent.home, ...sharedContent.home },
+          about: { ...defaultContent.about, ...sharedContent.about },
+          contact: { ...defaultContent.contact, ...sharedContent.contact },
+          text: { ...defaultContent.text, ...sharedContent.text },
+        });
+      }
       if (active) {
         setSession(currentSession);
         setIsLoading(false);
@@ -150,8 +185,10 @@ const App = () => {
         activeSection={activeSection}
         scrollToSection={scrollToSection}
         personalInfo={content.personalInfo}
+        text={content.text}
         isEditing={isEditing}
         onPersonalInfoChange={(value) => updateContent('personalInfo', value)}
+        onTextChange={(value) => updateContent('text', value)}
         adminControls={
           <div className="nav-admin-controls">
             {isEditing ? (
@@ -172,12 +209,12 @@ const App = () => {
         }
       />
       <main className="main-content">
-        <Home home={content.home} personalInfo={content.personalInfo} scrollToSection={scrollToSection} isEditing={isEditing} onHomeChange={(value) => updateContent('home', value)} />
-        <AboutMe about={content.about} isEditing={isEditing} onAboutChange={(value) => updateContent('about', value)} />
-        <Skills skills={content.skills} isEditing={isEditing} onSkillsChange={(value) => updateContent('skills', value)} />
-        <MyWork projects={content.projects} isEditing={isEditing} onProjectsChange={(value) => updateContent('projects', value)} />
-        <WorkHistory experience={content.experience} isEditing={isEditing} onExperienceChange={(value) => updateContent('experience', value)} />
-        <ContactMe personalInfo={content.personalInfo} contact={content.contact} isEditing={isEditing} onContactChange={(value) => updateContent('contact', value)} onPersonalInfoChange={(value) => updateContent('personalInfo', value)} />
+        <Home home={content.home} personalInfo={content.personalInfo} text={content.text} scrollToSection={scrollToSection} isEditing={isEditing} onHomeChange={(value) => updateContent('home', value)} onPersonalInfoChange={(value) => updateContent('personalInfo', value)} onTextChange={(value) => updateContent('text', value)} />
+        <AboutMe about={content.about} text={content.text} isEditing={isEditing} onAboutChange={(value) => updateContent('about', value)} onTextChange={(value) => updateContent('text', value)} />
+        <Skills skills={content.skills} text={content.text} isEditing={isEditing} onSkillsChange={(value) => updateContent('skills', value)} onTextChange={(value) => updateContent('text', value)} />
+        <MyWork projects={content.projects} text={content.text} isEditing={isEditing} onProjectsChange={(value) => updateContent('projects', value)} onTextChange={(value) => updateContent('text', value)} />
+        <WorkHistory experience={content.experience} text={content.text} isEditing={isEditing} onExperienceChange={(value) => updateContent('experience', value)} onTextChange={(value) => updateContent('text', value)} />
+        <ContactMe personalInfo={content.personalInfo} contact={content.contact} text={content.text} isEditing={isEditing} onContactChange={(value) => updateContent('contact', value)} onPersonalInfoChange={(value) => updateContent('personalInfo', value)} onTextChange={(value) => updateContent('text', value)} />
       </main>
     </div>
   );
