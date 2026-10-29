@@ -13,19 +13,10 @@
   min-height: 100vh;
 }
 
-.editor-toolbar {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 300;
+.nav-admin-controls {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  padding: 0.35rem;
-  background: rgba(11, 27, 46, 0.92);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  gap: 0.4rem;
 }
 
 .editor-button {
@@ -86,20 +77,15 @@
 .home-edit { max-width: 580px; }
 .edit-heading { font-size: 2.8rem; font-weight: 700; margin-bottom: 3rem; }
 
-@media (max-width: 768px) {
-  .editor-toolbar { top: 0.6rem; right: 0.75rem; }
-  .editor-hint { display: none; }
-}
-
 .main-content {
   flex: 1;
   min-height: 100vh;
-  margin-left: var(--sidebar-w);
+  margin-left: 0;
 }
 
 @media (max-width: 768px) {
   .main-content {
     margin-left: 0;
-    margin-top: 56px;
+    margin-top: 72px;
   }
 }

@@ -112,9 +112,16 @@ const MyWork = ({ projects, isEditing, onProjectsChange }) => {
             <h2>{selectedProject.title}</h2>
             <div className="details-gallery">
               {getProjectImages(selectedProject).length > 0 ? getProjectImages(selectedProject).map((image, imageIndex) => (
-                <button key={imageIndex} onClick={() => openLightbox(selectedProjectIndex, imageIndex)} aria-label={`Enlarge picture ${imageIndex + 1}`}>
+                <div className="details-image-wrap" key={imageIndex}>
+                  <button className="details-image-button" onClick={() => openLightbox(selectedProjectIndex, imageIndex)} aria-label={`Enlarge picture ${imageIndex + 1}`}>
                   <img src={image} alt={`${selectedProject.title} preview ${imageIndex + 1}`} />
-                </button>
+                  </button>
+                  {isEditing && <button className="details-image-remove" onClick={() => {
+                    const images = getProjectImages(selectedProject).filter((_, currentIndex) => currentIndex !== imageIndex);
+                    updateProject(selectedProjectIndex, 'images', images);
+                    if (lightbox?.projectIndex === selectedProjectIndex && lightbox.imageIndex === imageIndex) closeLightbox();
+                  }}>Remove</button>}
+                </div>
               )) : <div className="details-empty">No project pictures yet.</div>}
             </div>
             {isEditing && (

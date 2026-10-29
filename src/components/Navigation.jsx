@@ -10,7 +10,7 @@ const navItems = [
   { id: 'contact',    label: 'Contact' },
 ];
 
-const Navigation = ({ activeSection, scrollToSection, personalInfo, isEditing, onPersonalInfoChange }) => {
+const Navigation = ({ activeSection, scrollToSection, personalInfo, isEditing, onPersonalInfoChange, adminControls }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleNav = (id) => {
@@ -25,43 +25,25 @@ const Navigation = ({ activeSection, scrollToSection, personalInfo, isEditing, o
           <span className="sidebar-initials">
             {personalInfo.name.split(' ').map(n => n[0]).join('')}
           </span>
-          <div className="sidebar-info">
-            {isEditing ? (
-              <>
-                <input className="edit-input sidebar-edit" value={personalInfo.name} onChange={(e) => onPersonalInfoChange({ ...personalInfo, name: e.target.value })} />
-                <input className="edit-input sidebar-edit" value={personalInfo.title} onChange={(e) => onPersonalInfoChange({ ...personalInfo, title: e.target.value })} />
-              </>
-            ) : (
-              <>
-                <p className="sidebar-name">{personalInfo.name}</p>
-                <p className="sidebar-title">{personalInfo.title}</p>
-              </>
-            )}
-          </div>
         </div>
 
-        <div className="sidebar-divider" />
-
         <ul className="sidebar-nav">
-          {navItems.map((item, i) => (
+          {navItems.map((item) => (
             <li key={item.id}>
               <button
                 className={`sidebar-link ${activeSection === item.id ? 'active' : ''}`}
                 onClick={() => handleNav(item.id)}
               >
-                <span className="sidebar-index">0{i + 1}</span>
                 <span>{item.label}</span>
               </button>
             </li>
           ))}
         </ul>
 
-        <div className="sidebar-footer">
-          <span className="sidebar-status">
-            <span className="status-dot" />
-            Available
-          </span>
-        </div>
+        <button className="nav-menu-button" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle navigation">
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+        <div className="nav-admin-desktop">{adminControls}</div>
       </nav>
 
       {/* Mobile top bar */}

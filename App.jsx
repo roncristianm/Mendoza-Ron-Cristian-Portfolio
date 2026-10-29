@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { LogIn, LogOut, Pencil, RotateCcw, Save } from 'lucide-react';
+import { LogIn, LogOut, Pencil, Save } from 'lucide-react';
 import './src/styles/App.css';
 import Navigation from './src/components/Navigation';
 import Home from './src/sections/Home';
@@ -9,8 +9,6 @@ import MyWork from './src/sections/MyWork';
 import WorkHistory from './src/sections/WorkHistory';
 import ContactMe from './src/sections/ContactMe';
 import { isSupabaseConfigured, supabase } from './src/lib/supabase';
-
-const STORAGE_KEY = 'ron-portfolio-content';
 
 const defaultContent = {
   personalInfo: {
@@ -49,18 +47,9 @@ const defaultContent = {
   experience: [{ title: 'Student Intern - Computer Engineer', company: 'Planning and Development Office, BSU', period: '2025', description: "Developed and maintained web systems using React and Node.js as part of the university's planning and development team. Applied computer engineering principles to build practical software solutions used by the institution." }],
 };
 
-const loadContent = () => {
-  try {
-    const saved = window.localStorage.getItem(STORAGE_KEY);
-    return saved ? { ...defaultContent, ...JSON.parse(saved) } : defaultContent;
-  } catch {
-    return defaultContent;
-  }
-};
-
 const App = () => {
   const [activeSection, setActiveSection] = useState('home');
-  const [content, setContent] = useState(loadContent);
+  const [content, setContent] = useState(defaultContent);
   const [isEditing, setIsEditing] = useState(false);
   const [hasSaved, setHasSaved] = useState(false);
   const [session, setSession] = useState(null);
@@ -86,15 +75,8 @@ const App = () => {
     });
   };
 
-  const resetContent = () => {
-    if (window.confirm('Reset all portfolio edits to the original content?')) {
-      window.localStorage.removeItem(STORAGE_KEY);
-      setContent(defaultContent);
-      setHasSaved(false);
-    }
-  };
-
   const scrollToSection = (sectionId) => {
+    setActiveSection(sectionId);
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -119,7 +101,7 @@ const App = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) setActiveSection(entry.target.id);
       });
-    }, { threshold: 0.4 });
+    }, { rootMargin: '-18% 0px -62% 0px', threshold: 0 });
     ['home', 'about', 'skills', 'projects', 'experience', 'contact'].forEach((id) => {
       const element = document.getElementById(id);
       if (element) observer.observe(element);
@@ -135,7 +117,12 @@ const App = () => {
     event.preventDefault();
     setAuthError('');
     const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) setAuthError(error.message);
+    if (error) {
+      setAuthError(error.message);
+      return;
+    }
+    setPassword('');
+    document.getElementById('admin-login')?.close();
   };
 
   const signOut = async () => {
@@ -147,23 +134,6 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="editor-toolbar">
-        {isEditing ? (
-          <>
-            <span className="editor-hint">Editing mode</span>
-            <button className="editor-button save" onClick={saveContent}><Save size={15} /> Save changes</button>
-            <button className="editor-button reset" onClick={resetContent}><RotateCcw size={15} /> Reset</button>
-          </>
-        ) : session ? (
-          <>
-            <button className="editor-button" onClick={() => { setIsEditing(true); setHasSaved(false); }}><Pencil size={15} /> Edit portfolio</button>
-            <button className="editor-button" onClick={signOut}><LogOut size={15} /> Sign out</button>
-          </>
-        ) : (
-          <button className="editor-button" onClick={() => document.getElementById('admin-login')?.showModal()}><LogIn size={15} /> Admin login</button>
-        )}
-        {hasSaved && <span className="saved-message">Saved in this browser</span>}
-      </div>
       <dialog id="admin-login" className="login-dialog">
         <form onSubmit={signIn}>
           <button type="button" className="login-close" onClick={() => document.getElementById('admin-login')?.close()}>×</button>
@@ -175,7 +145,31 @@ const App = () => {
           <button className="editor-button save" type="submit">Sign in</button>
         </form>
       </dialog>
-      <Navigation activeSection={activeSection} scrollToSection={scrollToSection} personalInfo={content.personalInfo} isEditing={isEditing} onPersonalInfoChange={(value) => updateContent('personalInfo', value)} />
+      <Navigation
+        activeSection={activeSection}
+        scrollToSection={scrollToSection}
+        personalInfo={content.personalInfo}
+        isEditing={isEditing}
+        onPersonalInfoChange={(value) => updateContent('personalInfo', value)}
+        adminControls={
+          <div className="nav-admin-controls">
+            {isEditing ? (
+              <>
+                <span className="editor-hint">Editing</span>
+                <button className="editor-button save" onClick={saveContent}><Save size={15} /> Save</button>
+              </>
+            ) : session ? (
+              <>
+                <button className="editor-button" onClick={() => { setIsEditing(true); setHasSaved(false); }}><Pencil size={15} /> Edit</button>
+                <button className="editor-button" onClick={signOut}><LogOut size={15} /> Sign out</button>
+              </>
+            ) : (
+              <button className="editor-button" onClick={() => document.getElementById('admin-login')?.showModal()}><LogIn size={15} /> Admin login</button>
+            )}
+            {hasSaved && <span className="saved-message">Saved</span>}
+          </div>
+        }
+      />
       <main className="main-content">
         <Home home={content.home} personalInfo={content.personalInfo} scrollToSection={scrollToSection} isEditing={isEditing} onHomeChange={(value) => updateContent('home', value)} />
         <AboutMe about={content.about} isEditing={isEditing} onAboutChange={(value) => updateContent('about', value)} />

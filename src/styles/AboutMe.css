@@ -7,7 +7,7 @@
 .about-content {
   display: grid;
   grid-template-columns: 1fr 280px;
-  gap: 4rem;
+  gap: 6rem;
   align-items: center;
 }
 
@@ -16,13 +16,16 @@
 }
 
 .about-text p {
-  font-size: 1.05rem;
+  max-width: 850px;
+  font-size: clamp(1.15rem, 1.05rem + 0.35vw, 1.4rem);
   color: var(--text-secondary);
   line-height: 1.9;
 }
 
 .about-image {
   position: relative;
+  max-width: 400px;
+  justify-self: end;
 }
 
 .about-image::before {

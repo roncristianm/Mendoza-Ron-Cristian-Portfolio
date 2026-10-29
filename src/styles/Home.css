@@ -1,11 +1,13 @@
 .home {
-  min-height: 100vh;
+  min-height: min(820px, 100vh);
   display: flex;
   align-items: center;
   background: var(--bg);
   position: relative;
   overflow: hidden;
   padding: 0;
+  background:
+    linear-gradient(120deg, rgba(7, 21, 43, 0.98) 0%, rgba(12, 49, 99, 0.95) 100%);
 }
 
 /* Corner decoration */
@@ -21,13 +23,18 @@
 }
 
 .home-content {
-  width: 100%;
-  padding: 0 40px;
+  width: min(1320px, calc(100% - 6rem));
+  margin: 0 auto;
+  padding: 7rem 0 5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(380px, 0.85fr);
+  align-items: center;
+  gap: 4rem;
 }
 
 .home-tag {
   font-family: 'Courier New', monospace;
-  font-size: 0.75rem;
+  font-size: clamp(0.8rem, 0.74rem + 0.2vw, 0.95rem);
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -45,18 +52,18 @@
   font-size: clamp(2.8rem, 5vw, 5rem);
   font-weight: 800;
   line-height: 1.05;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.055em;
   color: var(--text);
   margin-bottom: 0.5rem;
 }
 
 .highlight {
   color: var(--accent);
-  text-shadow: 0 0 40px rgba(0, 212, 255, 0.35);
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
 }
 
 .home-content h2 {
-  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-size: clamp(1.15rem, 2vw, 1.6rem);
   font-weight: 400;
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
@@ -75,9 +82,9 @@
 }
 
 .home-content > p {
-  font-size: 1.05rem;
+  font-size: clamp(1.1rem, 1rem + 0.35vw, 1.3rem);
   color: var(--text-secondary);
-  max-width: 540px;
+  max-width: 760px;
   margin-bottom: 2.5rem;
   line-height: 1.8;
 }
@@ -96,6 +103,57 @@
   border-top: 1px solid var(--border);
 }
 
+.home-copy > p:not(.home-tag) {
+  color: #dbeafe;
+}
+
+.home-portrait {
+  position: relative;
+  min-height: 390px;
+  display: grid;
+  place-items: center;
+}
+
+.portrait-frame {
+  position: relative;
+  z-index: 1;
+  width: min(360px, 80%);
+  aspect-ratio: 0.82;
+  padding: 0.65rem;
+  background: var(--accent);
+  clip-path: polygon(18% 0, 82% 0, 100% 16%, 100% 84%, 82% 100%, 18% 100%, 0 84%, 0 16%);
+  filter: drop-shadow(0 20px 30px rgba(2, 12, 30, 0.35));
+}
+
+.portrait-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  clip-path: inherit;
+}
+
+.portrait-orbit {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  animation: orbit-pulse 4s ease-in-out infinite;
+}
+
+.orbit-two {
+  width: 430px;
+  height: 430px;
+  border-color: rgba(255, 255, 255, 0.12);
+  animation-delay: 1s;
+}
+
+@keyframes orbit-pulse {
+  50% { transform: scale(1.04); opacity: 0.6; }
+}
+
 .stat-item {
   display: flex;
   flex-direction: column;
@@ -103,7 +161,7 @@
 }
 
 .stat-value {
-  font-size: 1.75rem;
+  font-size: clamp(1.9rem, 2.5vw, 2.35rem);
   font-weight: 700;
   color: var(--accent);
   letter-spacing: -0.03em;
@@ -111,7 +169,7 @@
 }
 
 .stat-label {
-  font-size: 0.75rem;
+  font-size: clamp(0.8rem, 0.72rem + 0.2vw, 0.95rem);
   color: var(--text-secondary);
   font-family: 'Courier New', monospace;
   letter-spacing: 0.05em;
@@ -120,8 +178,16 @@
 
 @media (max-width: 768px) {
   .home-content {
-    padding: 0 24px;
+    width: calc(100% - 2rem);
+    padding: 6rem 0 3rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
+
+  .home-portrait { min-height: 300px; order: -1; }
+  .portrait-frame { width: min(270px, 70%); }
+  .portrait-orbit { width: 290px; height: 290px; }
+  .orbit-two { width: 330px; height: 330px; }
 
   .home-stats {
     gap: 2rem;

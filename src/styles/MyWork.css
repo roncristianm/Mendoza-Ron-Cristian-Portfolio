@@ -6,7 +6,7 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
 }
 
@@ -16,7 +16,7 @@
   border-radius: var(--radius);
   padding: 2rem;
   position: relative;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -30,7 +30,7 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background: rgba(4, 10, 16, 0.9);
+  background: rgba(5, 28, 68, 0.92);
 }
 
 .lightbox-content {
@@ -112,13 +112,14 @@
 }
 
 .project-edit-fields { display: grid; gap: 0.5rem; }
-.project-title-edit { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.6rem; }
-.upload-button { color: var(--accent); border: 1px dashed var(--accent-border); padding: 0.5rem; text-align: center; cursor: pointer; font-size: 0.8rem; }
+.project-title-edit { font-size: clamp(1.2rem, 1.1rem + 0.25vw, 1.45rem); font-weight: 600; margin-bottom: 0.6rem; }
+.upload-button { color: var(--accent); border: 1px dashed var(--accent-border); padding: 0.5rem; text-align: center; cursor: pointer; font-size: clamp(0.85rem, 0.8rem + 0.15vw, 0.95rem); }
 .upload-button input { display: none; }
 
 .project-card:hover {
   border-color: var(--accent-border);
   box-shadow: var(--accent-glow);
+  transform: translateY(-4px);
 }
 
 /* Corner bracket top-right */
@@ -136,7 +137,7 @@
 
 .project-number {
   font-family: 'Courier New', monospace;
-  font-size: 0.65rem;
+  font-size: clamp(0.7rem, 0.65rem + 0.15vw, 0.8rem);
   color: var(--accent);
   opacity: 0.5;
   letter-spacing: 0.1em;
@@ -144,7 +145,7 @@
 }
 
 .project-content h3 {
-  font-size: 1.15rem;
+  font-size: clamp(1.25rem, 1.15rem + 0.3vw, 1.5rem);
   font-weight: 600;
   color: var(--text);
   margin-bottom: 0.6rem;
@@ -152,7 +153,7 @@
 }
 
 .project-content p {
-  font-size: 0.9rem;
+  font-size: clamp(0.98rem, 0.92rem + 0.2vw, 1.1rem);
   color: var(--text-secondary);
   line-height: 1.75;
   margin-bottom: 1.25rem;
@@ -175,7 +176,7 @@
   color: var(--text-secondary);
   padding: 0.2rem 0.65rem;
   border-radius: 2px;
-  font-size: 0.775rem;
+  font-size: clamp(0.8rem, 0.75rem + 0.15vw, 0.9rem);
   font-weight: 500;
   border: 1px solid var(--accent-border);
   font-family: 'Courier New', monospace;
@@ -192,7 +193,7 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.85rem;
+  font-size: clamp(0.9rem, 0.84rem + 0.2vw, 1rem);
   color: var(--accent);
   font-weight: 500;
   text-decoration: none;
@@ -214,7 +215,7 @@
   border: 0;
   cursor: pointer;
   font-family: inherit;
-  font-size: 0.85rem;
+  font-size: clamp(0.9rem, 0.84rem + 0.2vw, 1rem);
   font-weight: 500;
   letter-spacing: 0.02em;
 }
@@ -229,7 +230,7 @@
   z-index: 450;
   overflow-y: auto;
   padding: 5rem 1.5rem;
-  background: rgba(4, 10, 16, 0.9);
+  background: rgba(5, 28, 68, 0.92);
 }
 
 .project-details {
@@ -265,11 +266,29 @@
   margin-bottom: 1.5rem;
 }
 
-.details-gallery button {
+.details-image-wrap {
+  position: relative;
+}
+
+.details-image-button {
+  display: block;
+  width: 100%;
   padding: 0;
   border: 1px solid var(--border);
   background: var(--bg);
   cursor: zoom-in;
+}
+
+.details-image-remove {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  color: #ffffff;
+  background: rgba(22, 52, 74, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  font-size: 0.7rem;
 }
 
 .details-gallery img {
